@@ -2,6 +2,7 @@ var express = require('express'),
     bodyParser      = require('body-parser'),
     methodOverride  = require('method-override'),
     sessions        = require('./routes/sessions'),
+    foods			= require('./routes/foods'),
     app = express();
 
 app.use(bodyParser.json());
@@ -19,6 +20,9 @@ app.all('*', function(req, res, next) {
 
 app.get('/sessions', sessions.findAll);
 app.get('/sessions/:id', sessions.findById);
+
+app.get('/foods',foods.findAll);
+app.get('/foods/:id',foods.findById);
 
 app.set('port', process.env.PORT || 5000);
 
